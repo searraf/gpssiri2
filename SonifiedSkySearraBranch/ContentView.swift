@@ -21,23 +21,23 @@ class ViewController: UIViewController, INUIAddVoiceShortcutButtonDelegate {
         <#code#>
     }
     
-    let manager = CMMotionManager ()
-    func UIViewController() {
-        
-    
-        func viewDidLoad() {
+    let motionManager = CMMotionManager ()
+   
+    override func viewDidLoad() {
         super.viewDidLoad()
-        manager.startAccelerometerUpdates()
-        if let data = manager.accelerometerData {}
-        data.acceleration.x
-        addSiriButton(to: self.view)
+    
+        motionManager.startAccelerometerUpdates(to: <#OperationQueue#>)
+        {_,_ in
+    }
+        motionManager.startGyroUpdates()
+        motionManager.startMagnetometerUpdates()
+        motionManager.startDeviceMotionUpdates()
         
     }
         
         func addSiriButton(to view: UIView) {
             if #available(iOS 12.0, *) {
                 let button = INUIAddVoiceShortcutButton(style: .whiteOutline)
-                button.shortcut = INShortcut(intent: intent)
                 button.delegate = self
                 button.translatesAutoresizingMaskIntoConstraints = false
                 view.addSubview(button)
@@ -47,7 +47,7 @@ class ViewController: UIViewController, INUIAddVoiceShortcutButtonDelegate {
 
             }
     }
-}
+
 struct ContentView : View {
     var body: some View {
         return ARViewContainer().edgesIgnoringSafeArea(.all)
